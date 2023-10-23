@@ -1,0 +1,51 @@
+services:
+  psql:
+    image: postgres:alpine
+    container_name: casa-automatica_postgres
+    hostname: postgresql
+    environment:
+      - POSTGRES_PASSWORD=viniccius13
+      - POSTGRES_USER=casa_automatica
+      - POSTGRES_DB=casa_automatica
+    volumes:
+      - ./pgsql:/var/lib/postgres/data/
+      - ./logs/psql:/var/log/postgresql/
+    ports:
+      - "5432:5432"
+    networks:
+      - casa-automatica
+  nginx:
+    image: nginx:latest-alpine
+    container_name: casa-automatica_nginx
+    hostname: nginx
+    volumes:
+      - ./web/:/var/www
+      - ./logs/nginx/:/var/log/nginx/
+      - ./nginx/confs/:/etc/nginx/conf.d
+    ports:
+      - "8080:80"
+      - "8443:443"
+    depends_on:
+      - psql
+    networks:
+      - casa-automatica
+  php:
+    image: php:fpm-alpine
+    container_name: casa-automatica_php
+    hostname: php
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./web/:/var/www
+      - ./logs/php/:/var/log/fpm-php.www.log
+      - ./php/zz-docker-extensions.ini:/usr/local/etc/php/conf.d/zz-docker-extensions.ini
+    ports:
+      - "9003"
+    depends_on:
+      - nginx
+    networks:
+      - casa-automatica
+networks:
+  casa-automatica:
+    driver: bridge
