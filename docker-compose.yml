@@ -41,7 +41,7 @@ services:
       - ./logs/php/:/var/log/fpm-php.www.log
       - ./php/zz-docker-extensions.ini:/usr/local/etc/php/conf.d/zz-docker-extensions.ini
     ports:
-      - "9003"
+      - "9000"
     depends_on:
       - nginx
     networks:
