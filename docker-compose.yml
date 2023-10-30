@@ -1,17 +1,19 @@
 services:
-  psql:
-    image: postgres:alpine
-    container_name: casa-automatica_postgres
-    hostname: postgresql
+  mariadb:
+    image: mariadb:latest
+    container_name: casa-automatica_mariadb
+    hostname: mariadb
     environment:
-      - POSTGRES_PASSWORD=viniccius13
-      - POSTGRES_USER=casa_automatica
-      - POSTGRES_DB=casa_automatica
+      - MARIADB_USER=casa_automatica
+      - MARIADB_PASSWORD=viniccius13
+      - MARIADB_DB=casa_automatica
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=0
+      - MARIADB_ROOT_PASSWORD=monkeyisnice123
     volumes:
-      - ./pgsql:/var/lib/postgres/data/
-      - ./logs/psql:/var/log/postgresql/
+      - ./mariadb/data:/var/lib/mysql:Z
+      - ./mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf
     ports:
-      - "5432:5432"
+      - "3306:3306"
     networks:
       - casa-automatica
   nginx:
@@ -26,7 +28,7 @@ services:
       - "8080:80"
       - "8443:443"
     depends_on:
-      - psql
+      - mariadb
     networks:
       - casa-automatica
   php:

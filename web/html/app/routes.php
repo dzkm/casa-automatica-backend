@@ -17,7 +17,6 @@ return function (App $app) {
 
     $app->get('/', function (Request $request, Response $response) {
         $response->getBody()->write('Hello world!');
-        var_dump($response);
         return $response;
     });
 
