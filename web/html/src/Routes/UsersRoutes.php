@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\RequestInterface as Request;
 use Slim\App;
@@ -7,11 +8,11 @@ return function (App $app) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
-    $app->get('/users/{id}', function (Request $request, Response $response) {
+    $app->get('/user/{id}', function (Request $request, Response $response) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
-    $app->post('/users', function (Request $request, Response $response) {
+    $app->post('/user', function (Request $request, Response $response) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
