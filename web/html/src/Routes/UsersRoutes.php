@@ -8,11 +8,11 @@ return function (App $app) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
-    $app->get('/user/{id}', function (Request $request, Response $response) {
+    $app->get('/users/{id}', function (Request $request, Response $response) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
-    $app->post('/user', function (Request $request, Response $response) {
+    $app->post('/users', function (Request $request, Response $response) {
         $response->getBody()->write('<a href="/users"> try /casa/automatica</a>');
         return $response;
     });
