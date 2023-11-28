@@ -3,7 +3,7 @@ namespace App\Models;
 use DateTime;
 
 class Room{
-    private int $id;
+    private int|null $id;
     private int $userID;
     private int $houseID;
     private string $description;
@@ -13,7 +13,9 @@ class Room{
     private bool $deleted;
 
     
-    public function __construct(int $id, string $description){
+    public function __construct(string $description, int|null $id = null){
+        $this->id = $id;
+        $this->description = $description;
     }
     public function getId(): int{
         return $this->id;
