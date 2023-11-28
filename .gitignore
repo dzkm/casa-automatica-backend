@@ -1,4 +1,4 @@
 .vscode/
 logs/
 mariadb/data/
-web/html/vendor
+web/html/vendor/
