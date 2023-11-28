@@ -1,8 +1,18 @@
 <?php
 
+use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 
 require(__DIR__ . "/../vendor/autoload.php");
+$dependencies = require(__DIR__ . "/../src/Configuration/Dependencies.php");
+$settings = require(__DIR__ . "/../src/Configuration/Settings.php");
+
+$containerBuilder = new ContainerBuilder;
+$settings($containerBuilder);
+$dependencies($containerBuilder);
+$container = $containerBuilder->build();
+
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->addErrorMiddleware(true, true, true);
 
@@ -26,8 +36,5 @@ $usersRoutes($app);
 
 $roomsRoutes = require(__DIR__ . '/../src/Routes/RoomsRoutes.php');
 $roomsRoutes($app);
-
-$usersRoutes = require(__DIR__ . '/../src/Routes/UsersRoutes.php');
-$usersRoutes($app);
 
 $app->run();
