@@ -7,11 +7,13 @@ use App\Controllers\RoomController;
 return function (App $app) {
     $container = $app->getContainer();
     
-    $app->get("/rooms", [RoomController::class, 'getAllRooms']);
+    $app->get('/rooms', [RoomController::class, 'getAllRooms']);
 
-    $app->get("/rooms/{id}", [RoomController::class, 'getRoomByID']);
+    $app->get('/rooms/all', [RoomController::class, 'getAllRoomsAndDeleted']);
 
-    $app->post("/rooms", [RoomController::class, 'createRoom']);
+    $app->get('/rooms/{id}', [RoomController::class, 'getRoomByID']);
+
+    $app->post('/rooms', [RoomController::class, 'createRoom']);
 
     $app->put('/rooms/{id}', function (Request $request, Response $response) {
         $response->getBody()->write('<a href="/rooms"> try /casa/automatica</a>');

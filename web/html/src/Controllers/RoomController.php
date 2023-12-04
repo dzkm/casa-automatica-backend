@@ -12,7 +12,13 @@ class RoomController{
         $this->db = $containerInterface->get('medoo');
     }
     public function getAllRooms(Request $request, Response $response){
-        $query = $this->db->select("rooms", "*", ["deleted" => 1]);
+        $query = $this->db->select("rooms", "*", ["deleted" => 0]);
+        $response->getBody()->write(json_encode($query));
+        return $response;
+    }
+
+    public function getAllRoomsAndDeleted(Request $request, Response $response){
+        $query = $this->db->select("rooms", "*");
         $response->getBody()->write(json_encode($query));
         return $response;
     }
