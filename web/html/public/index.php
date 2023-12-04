@@ -2,6 +2,8 @@
 
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
+use Psr\Http\Message\RequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as Handler;
 
 require(__DIR__ . "/../vendor/autoload.php");
 $dependencies = require(__DIR__ . "/../src/Configuration/Dependencies.php");
@@ -16,6 +18,21 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->addErrorMiddleware(true, true, true);
 
+/*
+=============================
+==========MIDDLEWARE=========
+=============================
+*/
+$app->add(function (Request $request, Handler $handler){
+    $response = $handler->handle($request);
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
+/*
+=============================
+==========ROUTES=============
+=============================
+*/
 $housesRoutes = require(__DIR__ . '/../src/Routes/HousesRoutes.php');
 $housesRoutes($app);
 
@@ -36,5 +53,11 @@ $usersRoutes($app);
 
 $roomsRoutes = require(__DIR__ . '/../src/Routes/RoomsRoutes.php');
 $roomsRoutes($app);
+
+/*
+=============================
+===========START=============
+=============================
+*/
 
 $app->run();
