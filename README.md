@@ -40,9 +40,10 @@ Insira os tópicos do README em links para facilitar a navegação do leitor
 Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 
 ## Pré-requisitos
-
-:warning: [Docker](https://www.docker.com/)
 :warning: [PHP](https://www.php.net/)
+<br>
+:warning: [Docker](https://www.docker.com/)
+<br>
 :warning: [Composer](https://getcomposer.org/)
 
 ## Como rodar a aplicação :arrow_forward:
@@ -81,7 +82,6 @@ Se for necessário configurar algo antes de iniciar o banco de dados insira os c
 
 - [PHP](https://www.php.net/)
 
-...
 
 Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo Github 
 
