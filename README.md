@@ -61,7 +61,7 @@ Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio 
 ### Rota para comodos:
 GET /rooms -> obtem todos os cômodos
 GET /rooms/all -> obtem todos os cômodos (inclusive os deletados) 
-GET /rooms/{id} -> obtm=em um comodo específico
+GET /rooms/{id} -> obtem um comodo específico
 POST /rooms -> cria um comodo
 PUT /rooms/{id} -> atualiza um comodo
 DELETE /rooms/{id} -> apaga um comodo específico
