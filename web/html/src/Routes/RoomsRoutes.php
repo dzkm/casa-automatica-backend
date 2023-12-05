@@ -15,10 +15,8 @@ return function (App $app) {
 
     $app->post('/rooms', [RoomController::class, 'createRoom']);
 
-    $app->put('/rooms/{id}', function (Request $request, Response $response) {
-        $response->getBody()->write('<a href="/rooms"> try /casa/automatica</a>');
-        return $response;
-    });
+    $app->put('/rooms/{id}', [RoomController::class, 'updateRoom']);
+    
     $app->delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
 
 };
