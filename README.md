@@ -60,10 +60,15 @@ Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio 
 
 ### Rota para comodos:
 GET /rooms -> obtem todos os cômodos
+<br>
 GET /rooms/all -> obtem todos os cômodos (inclusive os deletados) 
+<br>
 GET /rooms/{id} -> obtem um comodo específico
+<br>
 POST /rooms -> cria um comodo
+<br>
 PUT /rooms/{id} -> atualiza um comodo
+<br>
 DELETE /rooms/{id} -> apaga um comodo específico
 
 Se quiser, coloque uma amostra do banco de dados 
@@ -87,7 +92,6 @@ Liste o time responsável pelo desenvolvimento do projeto
 - [Djonathan](https://github.com/dzkm)
 - [Monike](https://github.com/monike29)
 - [Fernando](https://github.com/fernando-ao)
-| :---: | :---: | :---: 
 
 ## Licença 
 
