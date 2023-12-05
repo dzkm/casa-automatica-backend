@@ -51,7 +51,7 @@ Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 No terminal, clone o projeto: 
 
 ```
-git clone (https://github.com/dzkm/casa-automatica-backend)
+git clone git@github.com:dzkm/casa-automatica-backend.git
 ```
 
 Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio projeto e verfique se o passo a passo funciona**
